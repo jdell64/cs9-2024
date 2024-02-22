@@ -1,6 +1,10 @@
 # PONG CLONE
 This pong clone was created by the 9th grade of 2024 (Ally, Natalie, Kevin, Ryan, Parker).
 
+## 2/23
+
+have the kids do a git pull
+
 ## Possible Improvements
 
  - full screen?
