@@ -8,9 +8,9 @@ def main():
     running = True
 
     # Load music
-    pygame.mixer.music.load("bg.wav", "wav")
+    pygame.mixer.music.load("sound/bg.wav", "wav")
     pygame.mixer.music.play(-1)
-    hit_sound = pygame.mixer.Sound("hit.wav")
+    hit_sound = pygame.mixer.Sound("sound/hit.wav")
  
     # Defining the objects
     player_start_y = HEIGHT//2 - 50
@@ -45,12 +45,14 @@ def main():
                     geek2YFac = 0
                 if event.key == pygame.K_w or event.key == pygame.K_s:
                     geek1YFac = 0
+            geek1.yFac = geek1YFac
+            geek2.yFac = geek2YFac
  
         # Collision detection
         for geek in listOfGeeks:
             if pygame.Rect.colliderect(ball.getRect(), geek.getRect()):
                 hit_sound.play()
-                ball.hit()
+                ball.hit(geek.yFac, geek.currentSpeed)
  
         # Updating the objects
         geek1.update(geek1YFac)

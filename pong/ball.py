@@ -8,6 +8,7 @@ class Ball:
         self.posy = posy
         self.radius = radius
         self.speed = speed
+        self.initialSpeed = speed
         self.color = color
         self.xFac = 1
         self.yFac = -1
@@ -51,10 +52,20 @@ class Ball:
         self.posy = HEIGHT//2
         self.xFac *= -1
         self.firstTime = 1
+        self.speed = self.initialSpeed
  
     # Used to reflect the ball along the X-axis
-    def hit(self):
-        self.xFac *= -1
+    def hit(self, paddle_direction, paddle_speed):
+        self.xFac *= -1  # Reverse direction as before
+        
+        # Adjust yFac based on paddle's vertical movement
+        # Assuming paddle_direction is -1 (up), 0 (static), or 1 (down)
+        # and paddle_speed affects the magnitude of the bounce angle
+        self.yFac += paddle_direction * paddle_speed * 1  # Adjust 'some_factor' based on your game's physics
+
+        # Optional: Adjust speed based on paddle speed
+        self.speed += paddle_speed * 1
+
  
     def getRect(self):
         return self.ball

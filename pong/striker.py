@@ -2,7 +2,9 @@ import pygame
 from globals import HEIGHT, screen, font20
 
 class Striker:
-
+    yFac = 0
+    maxSpeed = 15
+    acceleration = 1    
     def __init__(self, posx, posy, width, height, speed, color):
         self.posx = posx
         self.posy = posy
@@ -19,7 +21,14 @@ class Striker:
         self.geek = pygame.draw.rect(screen, self.color, self.geekRect)
   
     def update(self, yFac):
-        self.posy = self.posy + self.speed*yFac
+        # self.posy = self.posy + self.speed*yFac
+         # Apply momentum
+        if yFac != 0:  # If moving, accelerate up to maxSpeed
+            self.currentSpeed = min(self.currentSpeed + self.acceleration, self.maxSpeed)
+        else:  # If not moving, reset speed
+            self.currentSpeed = 0
+        
+        self.posy += self.currentSpeed * yFac
  
         # Restricting the striker to be below
         # the top surface of the screen

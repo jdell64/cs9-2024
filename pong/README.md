@@ -10,8 +10,6 @@ have the kids do a git pull
  - full screen?
  - bug: odd hit box issue, if hit on edge of paddle
  - spin on ball / differnt angles
- - sound
- - music
  - win score / end condition
  - menu?
  - powerups
