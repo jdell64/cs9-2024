@@ -10,6 +10,9 @@ GREEN = (0, 255, 0)
 
 WIDTH, HEIGHT = 900, 600
 
+WINNING_SCORE = 10 
+
+    
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 pygame.display.set_caption("Pong")

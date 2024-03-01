@@ -1,5 +1,5 @@
 import pygame
-from globals import HEIGHT, WIDTH, screen, GREEN, WHITE, BLACK, FPS, clock
+from globals import HEIGHT, WIDTH, screen, GREEN, WHITE, BLACK, FPS, clock, WINNING_SCORE
 from striker import Striker
 from ball import Ball
 
@@ -68,6 +68,14 @@ def main():
         if point:   # Someone has scored a point and the
           # ball is out of bounds. So, we reset it's position
             ball.reset()
+            if geek1Score >= WINNING_SCORE:
+                ball.reset()
+                geek1.reset()
+                geek2.reset()
+            elif geek2Score >= WINNING_SCORE:
+                ball.reset()
+                geek1.reset()
+                geek2.reset()
  
         # Displaying the objects on the screen
         geek1.display()

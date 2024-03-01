@@ -4,8 +4,8 @@ from globals import HEIGHT, screen, font20
 class Striker:
 
     def __init__(self, posx, posy, width, height, speed, color):
-        self.posx = posx
-        self.posy = posy
+        self.posx = self.original_posx = posx 
+        self.posy = self.original_posy = posy
         self.width = width
         self.height = height
         self.speed = speed
@@ -13,6 +13,10 @@ class Striker:
 
         self.geekRect = pygame.Rect(posx, posy, width, height)
         self.geek = pygame.draw.rect(screen, self.color, self.geekRect)
+
+    def reset(self):
+        self.posx = self.original_posx
+        self.posy = self.original_posy
         
     # Used to display the object on the screen
     def display(self):
