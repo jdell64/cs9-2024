@@ -10,7 +10,7 @@ GREEN = (0, 255, 0)
 
 WIDTH, HEIGHT = 900, 600
 
-WINNING_SCORE = 10 
+WINNING_SCORE = 1 
 
     
 screen = pygame.display.set_mode((WIDTH, HEIGHT))

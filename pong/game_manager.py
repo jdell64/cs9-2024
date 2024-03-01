@@ -2,6 +2,7 @@ import pygame
 from globals import HEIGHT, WIDTH, screen, GREEN, WHITE, BLACK, FPS, clock, WINNING_SCORE
 from striker import Striker
 from ball import Ball
+from utils import reset_game
 
 # Game Manager
 def main():
@@ -23,7 +24,7 @@ def main():
     # Initial parameters of the players
     geek1Score, geek2Score = 0, 0
     geek1YFac, geek2YFac = 0, 0
- 
+
     while running:
         screen.fill(BLACK)
  
@@ -69,14 +70,16 @@ def main():
           # ball is out of bounds. So, we reset it's position
             ball.reset()
             if geek1Score >= WINNING_SCORE:
-                ball.reset()
-                geek1.reset()
-                geek2.reset()
+                # show a win screen, then after key press, reset game
+                reset_game(ball, listOfGeeks)
+                geek1Score = 0
+                geek2Score = 0
             elif geek2Score >= WINNING_SCORE:
-                ball.reset()
-                geek1.reset()
-                geek2.reset()
- 
+                reset_game(ball, listOfGeeks)
+                geek1Score = 0
+                geek2Score = 0
+
+
         # Displaying the objects on the screen
         geek1.display()
         geek2.display()
@@ -89,3 +92,4 @@ def main():
         pygame.display.update()
         # Adjusting the frame rate
         clock.tick(FPS)
+
